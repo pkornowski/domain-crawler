@@ -1,6 +1,7 @@
 package com.domaincrawler.crawler;
 
 import com.domaincrawler.crawler.manager.CrawlerManager;
+import com.domaincrawler.crawler.model.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +26,8 @@ public class DomainController {
     }
 
     @PostMapping("/urls")
-    public ResponseEntity<Set<String>> retrieveUrlsFromPage(@RequestBody String stringUrl) throws IOException {
-        final HashSet<String> detectedUrls = crawlerManager.listAllDetectedUrls(new URL(stringUrl));
+    public ResponseEntity<?> retrieveUrlsFromPage(@RequestBody String stringUrl) throws IOException {
+        final Page detectedUrls = crawlerManager.listAllDetectedUrls(new URL(stringUrl));
 
         return new ResponseEntity<>(detectedUrls, HttpStatus.OK);
     }

@@ -1,5 +1,7 @@
 package com.domaincrawler.crawler.manager;
 
+import com.domaincrawler.crawler.model.Page;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashSet;
@@ -15,5 +17,5 @@ public interface CrawlerManager {
      * @param url of the domain for lookup.
      * @return Unique set of urls or empty set if any link didn't be detected.
      */
-    HashSet<String> listAllDetectedUrls(URL url) throws IOException;
+    Page listAllDetectedUrls(URL url) throws IOException;
 }
