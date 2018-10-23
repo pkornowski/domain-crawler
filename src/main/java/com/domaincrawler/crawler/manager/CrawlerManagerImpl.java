@@ -29,14 +29,16 @@ public class CrawlerManagerImpl implements CrawlerManager {
 
     private static final String IMPORT_SELECTOR = "link[href]";
 
-    private final HashSet<String> resources = new HashSet<>();
+    private HashSet<String> resources;
 
-    private final HashSet<String> visitedUrls = new HashSet<>();
+    private HashSet<String> visitedUrls;
 
     private String mainDomain;
 
     @Override
     public Page listAllDetectedUrls(final URL url) {
+        resources = new HashSet<>();
+        visitedUrls = new HashSet<>();
         mainDomain = url.toString();
         final Page mainPage = Page.builder().link(mainDomain).inDomain(true).build();
         crawlPage(mainPage);
